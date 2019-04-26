@@ -1,0 +1,793 @@
+
+<!doctype html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+<!--<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">-->
+    <!--<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>-->
+    <!--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+    <!--<ul class="navbar-nav px-3">-->
+        <!--<li class="nav-item text-nowrap">-->
+            <!--<a class="nav-link" href="#">Sign out</a>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</nav>-->
+
+<!--<div class="container-fluid">-->
+    <!--<div class="row">-->
+        <!--<nav class="col-md-2 d-none d-md-block bg-light sidebar">-->
+            <!--<div class="sidebar-sticky">-->
+                <!--<ul class="nav flex-column">-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link active" href="#">-->
+                            <!--<span data-feather="home"></span>-->
+                            <!--Dashboard <span class="sr-only">(current)</span>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="file"></span>-->
+                            <!--Orders-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="shopping-cart"></span>-->
+                            <!--Products-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="users"></span>-->
+                            <!--Customers-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="bar-chart-2"></span>-->
+                            <!--Reports-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="layers"></span>-->
+                            <!--Integrations-->
+                        <!--</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+
+                <!--<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">-->
+                    <!--<span>Saved reports</span>-->
+                    <!--<a class="d-flex align-items-center text-muted" href="#">-->
+                        <!--<span data-feather="plus-circle"></span>-->
+                    <!--</a>-->
+                <!--</h6>-->
+                <!--<ul class="nav flex-column mb-2">-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="file-text"></span>-->
+                            <!--Current month-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="file-text"></span>-->
+                            <!--Last quarter-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="file-text"></span>-->
+                            <!--Social engagement-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="file-text"></span>-->
+                            <!--Year-end sale-->
+                        <!--</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</nav>-->
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">组织机构管理</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+
+                    <div class="btn-group mr-2">
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#myModal">新增院系</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#myModa2">新增专业</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#myModa3">新增班级</button>
+                    </div>
+
+
+                    <!--<button class="btn btn-sm btn-outline-secondary dropdown-toggle">-->
+                        <!--<span data-feather="calendar"></span>-->
+                        <!--This week-->
+                    <!--</button>-->
+                </div>
+
+
+            </div>
+        <div id="table">
+            <h2>院系</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>院系编号</th>
+                        <th>院系名称</th>
+                        <th>操作</th>
+                        <!--<th>Header</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(item,index) in newsList">
+                        <td>{{index+1}}</td>
+                        <td>{{item.num}}</td>
+                        <td>{{item.name}}</td>
+                        <td><button @click="deletelist(item.num,index)" class="delete">删除</button>&nbsp;
+                            <button class="edit" data-toggle="modal" data-target="#myModa4" @click="edit(item)">编辑</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <h2>专业</h2>
+            <div id="table2" class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>专业编号</th>
+                        <th>专业名称</th>
+                        <th>学制</th>
+                        <th>所属院系</th>
+                        <th>操作</th>
+                        <!--<th>Header</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(item,index) in newsList1">
+                        <td>{{index+1}}</td>
+                        <td>{{item.num}}</td>
+                        <td>{{item.maname}}</td>
+                        <td>{{item.edu_system}}</td>
+                        <td>{{item.dename}}</td>
+                        <td><button @click="deletelist2(item.num,index)" class="delete">删除</button>&nbsp;
+                            <button class="edit" data-toggle="modal" data-target="#myModa5" @click="edit2(item)">编辑</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <h2>班级</h2>
+            <div id="table3" class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>班级编号</th>
+                        <th>班级名称</th>
+                        <th>辅导员</th>
+                        <th>入学年份</th>
+                        <th>所属专业</th>
+                        <th>操作</th>
+                        <!--<th>Header</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(item,index) in newsList2">
+                        <td>{{index+1}}</td>
+                        <td>{{item.number}}</td>
+                        <td>{{item.clname}}</td>
+                        <td>{{item.tcname}}</td>
+                        <td>{{item.time}}</td>
+                        <td>{{item.majorname}}</td>
+                        <td><button @click="deletelist3(item.number,index)" class="delete">删除</button>&nbsp;
+                            <button class="edit" data-toggle="modal" data-target="#myModa6" @click="edit3(item)">编辑</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog modal-lg" >
+                    <div class="modal-content">
+
+                        <!-- 模态框头部 -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">新增院系</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- 模态框主体 -->
+                        <div class="modal-body">
+                            <form>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">院系编号</span>
+                                    </div>
+                                    <input name="num" type="text" v-model="addDetail.num" class="form-control">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">院系名称</span>
+                                    </div>
+                                    <input name="name" type="text" v-model="addDetail.name" class="form-control">
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- 模态框底部 -->
+                        <div class="modal-footer">
+                            <button @click="adddetail" class="btn btn-secondary" data-dismiss="modal">确定</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="myModa4">
+                <div class="modal-dialog modal-lg" >
+                    <div class="modal-content">
+
+                        <!-- 模态框头部 -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">修改院系</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- 模态框主体 -->
+                        <div class="modal-body">
+                            <form>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">院系编号</span>
+                                    </div>
+                                    <input name="num" type="text" v-model="editDetail.num" class="form-control">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">院系名称</span>
+                                    </div>
+                                    <input name="name" type="text" v-model="editDetail.name" class="form-control">
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- 模态框底部 -->
+                        <div class="modal-footer">
+                            <button @click="update" class="btn btn-secondary" data-dismiss="modal">确定</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="myModa2">
+                <div class="modal-dialog modal-lg" >
+                    <div class="modal-content">
+
+                        <!-- 模态框头部 -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">新增专业</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- 模态框主体 -->
+                        <div class="modal-body">
+                            <form>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">专业编号</span>
+                                    </div>
+                                    <input name="num" v-model="addDetail2.num" type="text" class="form-control">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">专业名称</span>
+                                    </div>
+                                    <input name="name" v-model="addDetail2.name" type="text" class="form-control">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">学制</span>
+                                    </div>
+                                    <input name="system" v-model="addDetail2.system" type="text" class="form-control">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">所属院系</span>
+                                    </div>
+                                    <select name="department" v-model="addDetail2.department" class="form-control" id="sel1">
+                                        <option v-for="option in newsList" v-bind:value="option.id">
+                                            {{option.name}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <!-- 模态框底部 -->
+                                <div class="modal-footer">
+                                    <button  @click="adddetail2" class="btn btn-secondary" data-dismiss="modal">确定</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="myModa5">
+                <div class="modal-dialog modal-lg" >
+                    <div class="modal-content">
+
+                        <!-- 模态框头部 -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">修改专业</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- 模态框主体 -->
+                        <div class="modal-body">
+                            <form>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">专业编号</span>
+                                    </div>
+                                    <input name="num" v-model="editDetail2.num" type="text" class="form-control">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">专业名称</span>
+                                    </div>
+                                    <input name="name" v-model="editDetail2.name" type="text" class="form-control">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">学制</span>
+                                    </div>
+                                    <input name="system" v-model="editDetail2.system" type="text" class="form-control">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">所属院系</span>
+                                    </div>
+                                    <select name="department" v-model="editDetail2.department" class="form-control" id="sel2">
+                                        <option v-for="option in newsList" v-bind:value="option.id">
+                                            {{option.name}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <!-- 模态框底部 -->
+                                <div class="modal-footer">
+                                    <button  @click="update2" class="btn btn-secondary" data-dismiss="modal">确定</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="myModa3">
+                <div class="modal-dialog modal-lg" >
+                    <div class="modal-content">
+
+                        <!-- 模态框头部 -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">新增班级</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- 模态框主体 -->
+                        <div class="modal-body">
+                            <form>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">班级编号</span>
+                                    </div>
+                                    <input name="num" v-model="addDetail3.num" type="text" class="form-control">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">班级名称</span>
+                                    </div>
+                                    <input name="name" v-model="addDetail3.name" type="text" class="form-control">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">辅导员</span>
+                                    </div>
+                                    <select name="counselor" v-model="addDetail3.counselor" class="form-control" id="sel13">
+                                        <option v-for="option2 in newsList3" v-bind:value="option2.id">
+                                            {{option2.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">入学年份</span>
+                                    </div>
+                                    <input name="time" v-model="addDetail3.time" type="text" class="form-control" placeholder="如2018-09-01">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">所属专业</span>
+                                    </div>
+                                    <select name="major" v-model="addDetail3.major" class="form-control" id="sel15">
+                                        <option v-for="option1 in newsList1" v-bind:value="option1.id">
+                                            {{option1.maname}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- 模态框底部 -->
+                        <div class="modal-footer">
+                            <button @click="adddetail3" class="btn btn-secondary" data-dismiss="modal">确定</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="myModa6">
+                <div class="modal-dialog modal-lg" >
+                    <div class="modal-content">
+
+                        <!-- 模态框头部 -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">修改班级</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- 模态框主体 -->
+                        <div class="modal-body">
+                            <form>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">班级编号</span>
+                                    </div>
+                                    <input name="num" v-model="editDetail3.num" type="text" class="form-control">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">班级名称</span>
+                                    </div>
+                                    <input name="name" v-model="editDetail3.name" type="text" class="form-control">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">辅导员</span>
+                                        <!--<p v-model="editDetail3.counselor"></p>-->
+                                    </div>
+                                    <select name="counselor" v-model="editDetail3.counselor" class="form-control" id="sel14">
+                                        <option v-for="option2 in newsList3" v-bind:value="option2.id">
+                                            {{option2.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">入学年份</span>
+                                    </div>
+                                    <input name="time" v-model="editDetail3.time" type="text" class="form-control" >
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">所属专业</span>
+                                    </div>
+                                    <select name="major" v-model="editDetail3.major" class="form-control" id="sel12">
+                                        <option v-for="option1 in newsList1" v-bind:value="option1.id">
+                                            {{option1.maname}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- 模态框底部 -->
+                        <div class="modal-footer">
+                            <button @click="update3" class="btn btn-secondary" data-dismiss="modal">确定</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+            <script>
+                /*当一个 Vue 实例被创建时，它向 Vue 的响应式系统中加入了其 data 对象中能找到的所有的属性。当这些属性的值发生改变时，html 视图将也会产生相应的变化。*/
+                var vue =new Vue({
+                    el: '#table',
+                    data: {
+                        newsList: [],
+                        newsList1: [],
+                        newsList2: [],
+                        newsList3: [],
+                        addDetail: {},
+                        addDetail2: {},
+                        addDetail3: {},
+                        editlist: false,
+                        editDetail: {},
+                        editDetail2:{},
+                        editDetail3:{},
+                        editid: '',
+                        editid2: '',
+                        editid3: ''
+                    },
+                    methods: {
+                        init: function () {
+
+                            var _self = this;
+                            var _this = this;
+                            var _self2 = this;
+                            //自定义 一个函数 ，用来查询所有的用户信息，返回Json
+                            //url  data  success
+                            $.get("/lxService?method=departmentselect", function (data) {
+                                _self.newsList = data;
+                            }, "json");
+                            $.get("/lxService?method=majorselect", function (data) {
+                                _this.newsList1 = data;
+                            }, "json");
+                            $.get("/lxService?method=classselect", function (data) {
+                                _self2.newsList2 = data;
+                            }, "json");
+                            $.get("/lxService?method=tcselect", function (data) {
+                                _self2.newsList3 = data;
+                            }, "json");
+                        },
+                        //新增
+                        adddetail: function () {
+                            // alert("iiii");
+                            // console.log(newsList1[1]);
+                            this.newsList.push({
+                                num: this.addDetail.num,
+                                name: this.addDetail.name,
+                                // place: this.addDetail.place,
+                                id: Math.floor(Math.random() * 1000000 + 1)
+                            });
+
+                            $.post("/lxService?method=departmentadd", {
+                                denum: this.addDetail.num,
+                                dename: this.addDetail.name,
+                                // place: this.addDetail.place,
+                            }, "json");
+                            // window.location.reload()
+                        },
+                        adddetail2: function () {
+                            // alert("iiii");
+                            this.newsList1.push({
+                                num: this.addDetail2.num,
+                                name: this.addDetail2.name,
+                                system: this.addDetail2.system,
+                                department: this.addDetail2.department,
+                                // place: this.addDetail.place,
+                                id: Math.floor(Math.random() * 1000000 + 1)
+                            });
+
+                            $.post("/lxService?method=majoradd", {
+                                manum: this.addDetail2.num,
+                                maname: this.addDetail2.name,
+                                masystem: this.addDetail2.system,
+                                madepartment: this.addDetail2.department,
+                                // place: this.addDetail.place,
+                            }, "json");
+                            window.location.reload()
+                        },
+                        adddetail3: function () {
+                            // alert("iiii");
+                            this.newsList2.push({
+                                num: this.addDetail3.num,
+                                name: this.addDetail3.name,
+                                counselor: this.addDetail3.counselor,
+                                time: this.addDetail3.time,
+                                major: this.addDetail3.major,
+                                // place: this.addDetail.place,
+                                id: Math.floor(Math.random() * 1000000 + 1)
+                            });
+
+                            $.post("/lxService?method=classadd", {
+                                clnum: this.addDetail3.num,
+                                clname: this.addDetail3.name,
+                                counselor: this.addDetail3.counselor,
+                                time: this.addDetail3.time,
+                                major: this.addDetail3.major,
+                                // place: this.addDetail.place,
+                            }, "json");
+                            window.location.reload()
+                        },
+                        //删除
+                        deletelist(num, i) {
+
+                            this.newsList.splice(i, 1);//i 为index ,即需要删除的元素的位置
+                            $.post("/lxService?method=departmentdelete&num=" + num + "", function () {
+                                alert("success");
+                            });
+                        },
+                        deletelist2(num, i) {
+
+                            this.newsList1.splice(i, 1);//i 为index ,即需要删除的元素的位置
+                            $.post("/lxService?method=majordelete&num=" + num + "", function () {
+                                alert("success");
+                            });
+                        },
+                        deletelist3(number, i) {
+
+                            this.newsList2.splice(i, 1);//i 为index ,即需要删除的元素的位置
+                            $.post("/lxService?method=classdelete&number=" + number + "", function () {
+                                alert("success");
+                            });
+                        },
+                        //编辑
+                        edit(item) {
+                            // console.log(item)
+                            this.editDetail = {
+                                num: item.num,
+                                name: item.name,
+                                // place: item.place,
+                                id: item.id
+                            }
+                            this.editlist = true
+                            this.editid = item.id
+                        },
+                        //确认更新
+                            update()
+                {
+                    let _this = this
+                    for (let i = 0; i < _this.newsList.length; i++) {
+                        if (_this.newsList[i].id == this.editid) {
+                            _this.newsList[i] = {
+                                num: _this.editDetail.num,
+                                name: _this.editDetail.name,
+                                // place: _this.editDetail.place,
+                                id: this.editid
+                            }
+                            $.post("/lxService?method=departmentupdate", {
+                                num: _this.editDetail.num,
+                                name: _this.editDetail.name,
+                                id: this.editid
+                                // place: _this.editDetail.place,
+                            }, "json");
+                            this.editlist = false
+                        }
+                    }
+                    window.location.reload()
+                },//update
+                        edit2(item) {
+                            // console.log(item)
+                            this.editDetail2 = {
+                                num: item.num,
+                                name: item.maname,
+                                system:item.edu_system,
+                                department:item.department,
+                                // place: item.place,
+                                id: item.id
+                            }
+                            // console.log(1);
+                            // console.log(item);
+                            // console.log(this.editDetail3);
+                            // console.log(item);
+                            this.editlist = true
+                            this.editid2 = item.id
+                        },
+                        //确认更新
+                        update2()
+                        {
+                            let _this = this
+                            for (let i = 0; i < _this.newsList1.length; i++) {
+                                if (_this.newsList1[i].id == this.editid2) {
+                                    _this.newsList1[i] = {
+                                        num: _this.editDetail2.num,
+                                        name: _this.editDetail2.name,
+                                        system:_this.editDetail2.system,
+                                        department:_this.editDetail2.department,
+                                        // place: _this.editDetail.place,
+                                        id: this.editid2
+                                    }
+
+                                    $.post("/lxService?method=majorupdate", {
+                                        num: _this.editDetail2.num,
+                                        name: _this.editDetail2.name,
+                                        system:_this.editDetail2.system,
+                                        department:_this.editDetail2.department,
+                                        id: this.editid2
+                                        // place: _this.editDetail.place,
+                                    }, "json");
+                                    this.editlist = false
+                                }
+                             }//console.log(_this.newsList1.length);
+                            window.location.reload()
+                        },//update
+                        edit3(item) {
+                            // console.log(item)
+                            this.editDetail3 = {
+                                num: item.number,
+                                name: item.clname,
+                                counselor:item.counselor,
+                                time:item.time,
+                                major:item.major,
+                                // place: item.place,
+                                id: item.id
+                            }
+                            // console.log(this.editDetail3);
+                            // console.log(item);
+                            // this.editlist = true
+                            this.editid3 = item.id
+                        },
+                        //确认更新
+                        update3()
+                        {
+                            let _this = this
+                            for (let i = 0; i < _this.newsList2.length; i++) {
+                                if (_this.newsList2[i].id == this.editid3) {
+                                    _this.newsList2[i] = {
+                                        num: _this.editDetail3.num,
+                                        name: _this.editDetail3.name,
+                                        counselor:_this.editDetail3.counselor,
+                                        time:_this.editDetail3.time,
+                                        major:_this.editDetail3.major,
+                                        // place: _this.editDetail.place,
+                                        id: this.editid3
+                                    }
+                                    $.post("/lxService?method=classupdate", {
+                                        num: _this.editDetail3.num,
+                                        name: _this.editDetail3.name,
+                                        counselor:_this.editDetail3.counselor,
+                                        time:_this.editDetail3.time,
+                                        major:_this.editDetail3.major,
+                                        id: this.editid3
+                                        // place: _this.editDetail.place,
+                                    }, "json");
+                                    this.editlist = false
+                                }
+                            }
+                            window.location.reload()
+                        }//update
+                    }
+                });
+                //初始化Vue对象完毕之后，就调用init方法 （一进入页面，就显示数据）
+                vue.init();
+            </script>
+        </main>
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+ <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    
+    
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+            <h2>成绩管理</h2>
+            <div id="yxf" class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    	<tr>
+                        <th>id</th>
+                        <th>学生学号</th>
+                        <th>学生姓名</th>
+                        <th>课程编号</th>
+                        <th>课程名称</th>
+                        <th>学生成绩</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                   <tr v-for="(item,index) in newsList"><!-- v-for 指令需要以 site in sites 形式的特殊语法， sites 是源数据数组并且 site 是数组元素迭代的别名。 -->
+                    <!--<td>{{index+1}}</td>   &lt;!&ndash; {{}}用于输出对象属性和函数返回值 &ndash;&gt;-->
+                       
+                        <td>{{item.id}}</td>
+                        <td>{{item.student_num}}</td>
+                        <td>{{item.studentname}}</td>
+                        <td>{{item.course_num}}</td>
+                        <td>{{item.coursename}}</td>
+                        <td>{{item.score}}</td>
+                        <td>
+                        	<button   data-toggle="modal" data-target="#myModal" @click="edit(item)">修改</button>
+                        <td>
+       			 	</tr>
+                    </tbody>
+                </table>
+                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel">
+								分数信息
+							</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								&times;
+							</button>
+						</div>
+					<div class="modal-body">
+						<table>
+							<tr>
+								<td>请输入学生分数：</td>
+								<td><input type="text" v-model="newscore" name="score" value=""/></td>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button type="button" @click="update" class="btn btn-default" data-dismiss="modal">提交
+						</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+						</button>
+						
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+            </div>
+                </div>
+               
+        </main>
+    </div>
+</div>
+
+<script>
+    /*当一个 Vue 实例被创建时，它向 Vue 的响应式系统中加入了其 data 对象中能找到的所有的属性。当这些属性的值发生改变时，html 视图将也会产生相应的变化。*/
+    var vue =new Vue({
+        el:'#yxf',
+        data:{
+            newsList:[],
+            addDetail: {},
+            editlist: false,
+            editDetail: {},
+            newscore: null,
+            editid:''
+        },
+        methods:{
+            init:function(){
+                var _self=this;
+                //自定义 一个函数 ，用来查询所有的用户信息，返回Json
+                $.get("./yxfService?method=changescore",function(data){
+                    _self.newsList =data;
+                },"json");
+            },
+            edit(item) {
+				
+				this.editDetail = {
+					/* score: item.score, */
+					id: item.id
+				};
+				this.editid = item.id;
+			},
+
+			//确认更新
+			update() {
+				let _this= this;
+				
+				for(let i = 0; i < _this.newsList.length; i++) {
+					if(_this.newsList[i].id ==this.editid) {
+						/* _this.newsList[i] = {
+							score: _this.editDetail.score,
+							id: this.editid
+						} */
+						$.post("./yxfService?method=update",{
+		    				score: this.newscore,
+	    					id: this.editid
+		        			},"json"); 
+						window.location.reload();
+					}
+				}
+			}//update
+
+
+        }
+       
+
+    });
+    
+    //初始化Vue对象完毕之后，就调用init方法 （一进入页面，就显示数据）
+    vue.init();
+</script>
+
+
+</body>
+</html>

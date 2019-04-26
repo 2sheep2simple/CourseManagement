@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="data">
+
+
+
+    <table>
+        <tr><th>ID</th><th>NAME</th></tr>
+        <tr v-for="(item,index) in newsList">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+        </tr>
+    </table>
+</div>
+
+
+
+<script>
+    /*当一个 Vue 实例被创建时，它向 Vue 的响应式系统中加入了其 data 对象中能找到的所有的属性。当这些属性的值发生改变时，html 视图将也会产生相应的变化。*/
+    var vue =new Vue({
+        el:'#data',
+        data:{
+            newsList:[],
+            addDetail: {},
+            editlist: false,
+            editDetail: {},
+            editid:''
+        },
+        methods:{
+            init:function(){
+                var _self=this;
+                //自定义 一个函数 ，用来查询所有的用户信息，返回Json
+                $.get("./Service?method=showall",function(data){
+                    _self.newsList =data;
+                },"json");
+            }
+        }
+    });
+    //初始化Vue对象完毕之后，就调用init方法 （一进入页面，就显示数据）
+    vue.init();
+</script>
+</body>
+</html>

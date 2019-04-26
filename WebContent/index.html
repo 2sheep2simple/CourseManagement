@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="img/xzpq.jpg">
+
+    <title>Signin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body class="text-center">
+
+<form class="form-signin" id="loginbox">
+    <img class="mb-4" src="img/xzpq.jpg" alt="" width="200" height="200">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputext" class="sr-only">Email address</label>
+    <input type="text" id="inputtext" class="form-control" v-model="login.number" placeholder="number" name="number">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" v-model="login.password" placeholder="Password"
+           name="password">
+
+    <button class="btn btn-lg btn-primary btn-block" @click="login" type="button">Sign in</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+</form>
+<script>
+
+    new Vue({
+
+        el: '#loginbox',
+        data: {
+            submitlogin: {}
+        },
+        methods: {
+
+            login: function () {
+                $.post("./login?method=login", {
+                        number: this.login.number,
+                        password: this.login.password
+                        /*    将用户填写的密码和账号作为json提交到servlet */
+                    }, function (data) {
+                        /* 提交成功，接收servlert回传过来的值 */
+                        var x = data.msg;
+                        // alert(data.msg);
+                        // if(x==1){
+                        //   /*x==1 密码正确，跳转我的信息页面，
+                        //       并将使用原来登陆的账号显示用户信息
+                        //   */
+                        //   alert('a');
+                        //   window.location.href="dashboard_teacher.html";
+                        // }else if(x==2){
+                        if (x != null) {
+                            localStorage.clear();
+                            localStorage.setItem('username', x);
+                            // alert(data.role);
+                            if (data.role === '2')
+                                window.location.href = "dashboard_student.html";
+                            else
+                                window.location.href = "dashboard_teacher.html";
+                        }
+                        else
+                            alert("学工号或密码错误");
+                        // }
+                        // else{
+                        //   /* 密码错误 */
+                        //   alert("密码错误！");
+                        // }
+                    },
+
+
+                    'json');
+            }
+
+        }
+    });
+</script>
+</body>
+</html>

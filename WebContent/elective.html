@@ -1,0 +1,238 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">课程管理系统</a>
+    <!--  
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    -->
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="#">Sign out</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="kxcourse.html">
+                            <span data-feather="home"></span>
+                            选课管理 <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                   
+                   
+                    
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Dashboard</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+						<a href="#"><input class="btn btn-sm btn-outline-secondary" type="button"  value="录入成绩"/></a>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                        <span data-feather="calendar"></span>
+                        This week
+                    </button>
+                </div>
+            </div>
+
+            <h2>课程信息</h2>
+            <div id="yxf" class="courseinfo">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>状态</th>
+                        <th>课程编号</th>
+                        <th>课程名称</th>
+                        <th>课程学时</th>
+                        <th>课程学分</th>
+                        <th>课程类别</th>           
+                        <th>起止时间</th>
+                        <th>上课时间</th>
+                        <th>教室</th>
+                        <th>教师</th>
+                        <th>总人数</th>
+                        <th>当前人数</th>
+                        <th>id</th>
+                      	<th>操作</th>
+                    </tr>
+                    </thead>
+                    
+                    <tbody>
+           		    <tr v-for="(item,index) in newsList"><!-- v-for 指令需要以 site in sites 形式的特殊语法， sites 是源数据数组并且 site 是数组元素迭代的别名。 -->
+                    <!--<td>{{index+1}}</td>   &lt;!&ndash; {{}}用于输出对象属性和函数返回值 &ndash;&gt;-->
+                        <td>{{item.status}}</td>
+                        <td>{{item.number}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.hour}}</td>
+                        <td>{{item.credit}}</td>
+                        <td>{{item.type}}</td>
+                        <td>{{item.week}}</td>
+                        <td>{{item.time}}</td>
+                         <td>{{item.classroom}}</td>
+                        <td>{{item.teacher}}</td>
+                        <td>{{item.full_number}}</td>
+                        <td>{{item.current_number}}</td>
+                        <td>{{item.courseid}}</td>
+                        <td>
+                        	<button @click="edit(item,index)" data-toggle="modal" data-target="#myModal" >修改信息</button>
+                        </td>
+       			 	</tr>
+                    </tbody>
+                </table>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title" id="myModalLabel">
+									修改课程信息
+								</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+								</button>
+							</div>
+						<div class="modal-body">
+							<table>
+								<tr>
+									<td>课程状态:</td>
+									<td><input type="text" name="coursestatus" v-model="changeit.status"></td>
+								</tr>
+								<tr>
+									<td>课程学时:</td>
+									<td><input type="text" name="coursehour" v-model="changeit.hour"></td>
+								</tr>
+								<tr>
+									<td>课程学分:</td>
+									<td><input type="text" name="coursecredit" v-model="changeit.credit"></td>
+								</tr>
+								<tr>
+									<td>起止时间:</td>
+									<td><input type="text" name="coursetime" v-model="changeit.week"></td>
+								</tr>
+								<tr>
+									<td>上课时间:</td>
+									<td><input type="text" name="classtime" v-model="changeit.time"></td>
+								</tr>
+								<tr>
+									<td>当前人数:</td>
+									<td><input type="text" name="current" v-model="changeit.current_number"></td>
+								</tr>
+								<tr>
+									<td>总人数:</td>
+									<td><input type="text" name="full" v-model="changeit.full_number"></td>
+								</tr>
+							</table>
+						</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+						</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal"  @click="update">
+							提交更改
+						</button>
+					</div>
+				</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
+            </div>
+        </main>
+    </div>
+</div>
+<script>
+    /*当一个 Vue 实例被创建时，它向 Vue 的响应式系统中加入了其 data 对象中能找到的所有的属性。当这些属性的值发生改变时，html 视图将也会产生相应的变化。*/
+    var vue =new Vue({
+        el:'#yxf',
+        data:{
+            newsList:[],
+            addDetail: {},
+            changeit: {},
+            editid:''
+        },
+        methods:{
+            init:function(){
+                var _self=this;
+                //自定义 一个函数 ，用来查询所有的用户信息，返回Json
+                $.get("./yxfService?method=courseshowall",function(data){
+                    _self.newsList =data;
+                },"json");
+            },
+            edit(item,index) {
+				/* console.log(item) */
+				this.changeit = {
+					number: item.number,
+					status: item.status,
+    				hour: item.hour,
+    				credit: item.credit,
+    				week: item.week,
+    				time: item.time,
+    				current_number:item.current_number,
+    				full_number:item.full_number,
+    				courseid:item.courseid,
+				}
+				/* this.editlist = true */
+				this.editid = item.courseid;
+				/* alert(this.editid); */
+				
+			},
+			//确认更新
+			update() {
+				let _this= this;
+				/* alert(this.editid);  */
+				for(let i = 0; i < _this.newsList.length; i++) {
+					/* alert("------"+_this.newsList[i].courseid+this.editid); */
+					/* alert("------"+_this.newsList[i].courseid+"----"+this.editid); */
+					if(_this.newsList[i].courseid==this.editid) {
+						
+						$.post("./yxfService?method=update1",{
+							status: _this.changeit.status,
+		    				hour: _this.changeit.hour,
+		    				credit: _this.changeit.credit,
+		    				week: _this.changeit.week,
+		    				time: _this.changeit.time,
+		    				current_number:_this.changeit.current_number,
+		    				full_number:_this.changeit.full_number,
+		    				courseid:_this.changeit.courseid
+		        			},function(data){
+		        				alert("success!");
+		        			},"json"); 
+						window.location.reload();
+					}
+				}
+			}//update
+
+          
+			
+        }
+    });
+    //初始化Vue对象完毕之后，就调用init方法 （一进入页面，就显示数据）
+    vue.init();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+ 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">基本信息管理</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                        <button class="btn btn-sm btn-outline-secondary">Share</button>
+                        <button class="btn btn-sm btn-outline-secondary">Export</button>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                        <span data-feather="calendar"></span>
+                        This week
+                    </button>
+                </div>
+            </div>
+
+            
+            <h2 class="modal-title">课程类别</h2>
+               
+            
+          <div class="table-responsive" id="table1">
+          
+           <div class="form-group">
+                  <input type="text" class="form-control" v-model="addDetail.type" placeholder="添加课程类别。"  name="num" >
+                  <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"  @click="adddetail" >增加</button>
+                     </div>
+            <table class="table table-striped table-sm"  >
+                    <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>课程类别</th>
+                        <th>操作</th>
+                    </tr >
+                    </thead>
+                    
+                     <tbody  class="modal-body" >
+                    <tr v-for="(item) in newsList">
+                        <td>{{item.id}}</td>
+                        <td>{{item.type}}</td>
+                        <td>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"  @click="deletelist(item.id)" >删除</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"  data-target="#edit1"  @click="edit(item)" >编辑</button>
+                        </td>
+                    </tr>
+                    
+                    </tbody>
+                    </table>
+                    
+                    
+          <div class="modal fade" id="edit1" >
+          <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+          <div class="modal-header">
+          <h4 class="modal-title">编辑</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+          </div>
+					<div class="modal-body"style="margin: 1% 20% 1% 10%">
+					<div class="form-group">
+                    <label for="usr">编号:</label>
+                     <input type="text" class="form-control" v-model="editDetail.id"  name="num" >
+                     </div>
+                   <div class="form-group">
+                    <label for="usr">课程类别:</label>
+                 <input type="text" class="form-control" v-model="editDetail.type" name="name" >
+                         </div>
+					</div>
+			 <div class="modal-footer">
+			 	<button  class="btn btn-secondary"data-dismiss="modal" @click="update">更新</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        </div>
+      </div>
+      </div>
+      </div>
+      
+     </div>  <!-- 第一个Vue  -->  
+            
+            
+         
+         <h4 class="modal-title">课程状态</h4>
+          <div class="table-responsive" id="table2">
+            <div class="form-group">
+                  <input type="text" class="form-control" v-model="addDetail.state" placeholder="添加课程状态。"  name="num" >
+                  <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"  @click="adddetail" >增加</button>
+                     </div>
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>课程状态</th>
+                        <th>操作</th>
+                     
+                    </tr>
+                    </thead>
+                     <tbody>
+                    <tr v-for="(item) in newsList">
+                        <td>{{item.id}}</td>
+                        <td>{{item.state}}</td>
+                        <td>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="modal"  @click="deletelist(item.id)">删除</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#edit2" @click="edit(item)">编辑</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    
+           <div class="modal fade" id="edit2">
+          <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+          <div class="modal-header">
+          <h4 class="modal-title">编辑</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         </div>
+				<div class="modal-body"style="margin: 1% 20% 1% 10%">
+				<div class="form-group">
+                  <label for="usr">编号:</label>
+                     <input type="text" class="form-control" v-model="editDetail.id"  name="num" >
+               </div>
+                <div class="form-group">
+                    <label for="usr">课程状态:</label>
+                    <input type="text" class="form-control" v-model="editDetail.state" name="name" >
+                </div>
+			   </div>
+		<div class="modal-footer">
+		  <button  class="btn btn-secondary" data-dismiss="modal" @click="update" >更新</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+    </div> <!-- 第二个Vue  -->  
+   
+   
+   
+          <h4 class="modal-title">民族</h4>
+          <div class="table-responsive" id=table3>
+          <div class="form-group">
+                  <input type="text" class="form-control" v-model="addDetail.name" placeholder="添加民族。"  name="num" >
+                  <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"  @click="adddetail" >增加</button>
+                     </div>
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>民族名称</th>
+                        <th>操作</th>
+                     
+                    </tr>
+                    </thead>
+                     <tbody>
+                    <tr v-for="(item) in newsList">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td><button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"   @click="deletelist(item.id)">删除</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#edit3" @click="edit(item)">编辑</button></td>
+                        
+                    </tr>
+                    
+                    </tbody>
+                    </table>
+                         <div class="modal fade" id="edit3">
+          <div class="modal-dialog">
+          <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+          <div class="modal-header">
+          <h4 class="modal-title">编辑</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+					<div class="modal-body"style="margin: 1% 20% 1% 10%">
+					<div class="form-group">
+                  <label for="usr">编号:</label>
+                     <input type="text" class="form-control" v-model="editDetail.id"  name="num" >
+                     </div>
+                   <div class="form-group">
+                    <label for="usr">民族名称:</label>
+                 <input type="text" class="form-control" v-model="editDetail.name" name="name" >
+                         </div>
+					</div>
+			 <div class="modal-footer">
+			 	<button  class="btn btn-secondary" data-dismiss="modal" @click="update" >更新</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        </div>
+      </div>
+      </div>
+      </div>
+      </div>
+        </div>
+ 
+       
+         
+        </main>
+  
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://cdn.bootcss.com/popper.js/1.14.3/esm/popper.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+   <!-- Icons -->
+<script src="https://cdn.bootcss.com/feather-icons/4.7.3/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+
+<script>
+			/*当一个 Vue 实例被创建时，它向 Vue 的响应式系统中加入了其 data 对象中能找到的所有的属性。当这些属性的值发生改变时，html 视图将也会产生相应的变化。*/
+			var vue1 =new Vue({
+			el:'#table1',
+			data:{
+				newsList:[],
+			    addDetail: {},
+			    editlist: false,
+			    editDetail: {},
+			    editid:'' 
+			},
+			
+	
+			methods:{
+				init:function(){
+					var _self=this;
+					//自定义 一个函数 ，用来查询所有的用户信息，返回Json
+				
+					$.get("./BaseinfoServlet?method=showall1",function(data){
+						_self.newsList =data;
+					},"json");
+				}
+			
+			 ,adddetail: function() {
+				this.newsList.push({
+				
+				type: this.addDetail.type,
+				
+				id:Math.floor(Math.random()*1000000+1)
+    			});
+    			
+                $.post("BaseinfoServlet?method=add1",{
+    				
+    				type: this.addDetail.type
+    				
+        			},"json"); 
+                window.location.href="./baseinfo.html"
+			},
+			//删除
+		      deletelist(id) {
+
+				this.newsList.splice(id);//i 为index ,即需要删除的元素的位置
+		    	$.post("BaseinfoServlet?method=delete1&id="+id+"",function() {
+		    		 alert("success");});
+		    	window.location.href="./baseinfo.html"
+			},
+			//编辑
+			edit(item) {
+				//console.log(item)
+				this.editDetail = {
+					id: item.id,
+					type: item.type
+				}
+
+				this.editlist = true;
+				this.editid = item.id;
+			},
+			//确认更新
+			update() {
+
+				let _this= this
+				for(let i = 0; i < _this.newsList.length; i++) {
+					if(_this.newsList[i].id ==this.editid) {
+						_this.newsList[i] = {
+							id: this.editid,
+							name: _this.editDetail.type
+
+						}
+						alert(this.editDetail.id+this.editDetail.type)
+						$.post("BaseinfoServlet?method=update1",{
+		    				id: _this.editDetail.id,
+		    				type: _this.editDetail.type
+		        			},"json");
+
+						this.editlist = false
+						window.location.href="./baseinfo.html"
+					}
+				}
+			}//update
+
+			}
+		});
+
+
+			var vue2=new Vue({
+				el:'#table2',
+				data:{
+					newsList:[],
+				    addDetail: {},
+				    editlist: false,
+				    editDetail: {},
+				    editid:''
+				},
+				methods:{
+					init:function(){
+						var _self=this;
+						//自定义 一个函数 ，用来查询所有的用户信息，返回Json
+
+						$.get("./BaseinfoServlet?method=showall2",function(data){
+							_self.newsList =data;
+						},"json");
+
+					}
+
+				,adddetail: function() {
+					this.newsList.push({
+
+					state: this.addDetail.state,
+
+					id:Math.floor(Math.random()*1000000+1)
+	    			});
+
+	                $.post("./BaseinfoServlet?method=add2",{
+
+	    				state: this.addDetail.state
+
+	        			},"json");
+	                window.location.href="./baseinfo.html"
+				},
+				//删除
+			      deletelist(id) {
+
+					this.newsList.splice(id);//i 为index ,即需要删除的元素的位置
+			    	$.post("BaseinfoServlet?method=delete2&id="+id+"",function() {
+			    		 alert("success");});
+			        window.location.href="./baseinfo.html"
+				},
+				//编辑
+				edit(item) {
+
+					//console.log(item)
+					this.editDetail = {
+						id: item.id,
+						state: item.state
+					}
+
+					this.editlist = true;
+					this.editid = item.id;
+				},
+				//确认更新
+				update() {
+					let _this= this
+					for(let i = 0; i < _this.newsList.length; i++) {
+						if(_this.newsList[i].id ==this.editid) {
+							_this.newsList[i] = {
+								id: this.editid,
+								state: _this.editDetail.state
+
+							}
+							$.post("BaseinfoServlet?method=update2",{
+			    				id: _this.editDetail.id,
+			    				state: _this.editDetail.state
+			        			},"json");
+							this.editlist = false
+							window.location.href="./baseinfo.html"
+						}
+					}
+				}//update
+
+				}
+			});
+
+
+			var vue3=new Vue({
+				el:'#table3',
+				data:{
+					newsList:[],
+				   addDetail: {},
+				    editlist: false,
+				    editDetail: {},
+				    editid:''
+				},
+
+
+				methods:{
+					init:function(){
+						var _self=this;
+						//自定义 一个函数 ，用来查询所有的用户信息，返回Json
+
+						$.get("./BaseinfoServlet?method=showall3",function(data){
+							_self.newsList =data;
+						},"json");
+					}
+
+				 ,adddetail: function() {
+					this.newsList.push({
+
+					name: this.addDetail.name,
+
+					id:Math.floor(Math.random()*1000000+1)
+	    			});
+
+	                $.post("./BaseinfoServlet?method=add3",{
+
+	    				name: this.addDetail.name
+
+	        			},"json");
+	                window.location.href="./baseinfo.html"
+				},
+				//删除
+			      deletelist(id) {
+
+					this.newsList.splice(id);//i 为index ,即需要删除的元素的位置
+			    	$.post("BaseinfoServlet?method=delete3&id="+id+"",function() {
+			    		 alert("success");});
+			    	window.location.href="./baseinfo.html"
+				},
+				//编辑
+				edit(item) {
+					//console.log(item)
+					this.editDetail = {
+						id: item.id,
+						name: item.name
+					}
+					this.editlist = true;
+					this.editid = item.id;
+				},
+				//确认更新
+				update() {
+					let _this= this
+					for(let i = 0; i < _this.newsList.length; i++) {
+						if(_this.newsList[i].id ==this.editid) {
+							_this.newsList[i] = {
+								id: this.editid,
+								name: _this.editDetail.name
+
+							}
+
+							$.post("BaseinfoServlet?method=update3",{
+			    				id: _this.editDetail.id,
+			    				name: _this.editDetail.name
+			        			},"json");
+							this.editlist = false
+							window.location.href="./baseinfo.html"
+							
+						}
+					}
+				}//update 
+				
+				}
+			});
+			
+		//初始化Vue对象完毕之后，就调用init方法 （一进入页面，就显示数据）
+		vue1.init();
+		vue2.init();
+		vue3.init(); 
+		</script>
+
+</body>
+</html>

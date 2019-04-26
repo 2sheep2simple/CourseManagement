@@ -1,0 +1,394 @@
+
+<!doctype html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+<!--<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">-->
+    <!--<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>-->
+    <!--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+    <!--<ul class="navbar-nav px-3">-->
+        <!--<li class="nav-item text-nowrap">-->
+            <!--<a class="nav-link" href="#">Sign out</a>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</nav>-->
+
+<!--<div class="container-fluid">-->
+    <!--<div class="row">-->
+        <!--<nav class="col-md-2 d-none d-md-block bg-light sidebar">-->
+            <!--<div class="sidebar-sticky">-->
+                <!--<ul class="nav flex-column">-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link active" href="#">-->
+                            <!--<span data-feather="home"></span>-->
+                            <!--Dashboard <span class="sr-only">(current)</span>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="file"></span>-->
+                            <!--Orders-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="shopping-cart"></span>-->
+                            <!--Products-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="users"></span>-->
+                            <!--Customers-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="bar-chart-2"></span>-->
+                            <!--Reports-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="layers"></span>-->
+                            <!--Integrations-->
+                        <!--</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+
+                <!--<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">-->
+                    <!--<span>Saved reports</span>-->
+                    <!--<a class="d-flex align-items-center text-muted" href="#">-->
+                        <!--<span data-feather="plus-circle"></span>-->
+                    <!--</a>-->
+                <!--</h6>-->
+                <!--<ul class="nav flex-column mb-2">-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="file-text"></span>-->
+                            <!--Current month-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="file-text"></span>-->
+                            <!--Last quarter-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="file-text"></span>-->
+                            <!--Social engagement-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#">-->
+                            <!--<span data-feather="file-text"></span>-->
+                            <!--Year-end sale-->
+                        <!--</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</nav>-->
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">用户管理</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+
+                    <div class="btn-group mr-2">
+                        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#myModal">新增用户</button>
+                    </div>
+
+
+                    <!--<button class="btn btn-sm btn-outline-secondary dropdown-toggle">-->
+                    <!--<span data-feather="calendar"></span>-->
+                    <!--This week-->
+                    <!--</button>-->
+                </div>
+
+
+            </div>
+            <div id="table">
+                <h2>用户一览</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>用户编号</th>
+                            <th>用户姓名</th>
+                            <!--<th>用户密码</th>-->
+                            <th>用户等级</th>
+                            <th>操作</th>
+                            <!--<th>Header</th>-->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(item,index) in newsList">
+                            <td>{{index+1}}</td>
+                            <td>{{item.number}}</td>
+                            <td>{{item.name}}</td>
+                            <!--<td>{{item.password}}</td>-->
+                            <td>{{permission[item.permission]}}</td>
+                            <td><button @click="deletelist(item.number,index)" class="delete">删除</button>&nbsp;
+                                <button class="edit" data-toggle="modal" data-target="#myModal2" @click="edit(item)">编辑</button>&nbsp;
+                                <button @click="resetting(item)" class="reset">重置密码</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog modal-lg" >
+                        <div class="modal-content">
+
+                            <!-- 模态框头部 -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">新增用户</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- 模态框主体 -->
+                            <div class="modal-body">
+                                <form>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">用户编号</span>
+                                        </div>
+                                        <input name="number" type="text" v-model="addDetail.number" class="form-control">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">用户姓名</span>
+                                        </div>
+                                        <input name="name" type="text" v-model="addDetail.name" class="form-control">
+                                    </div>
+                                    <!--<div class="input-group mb-3">-->
+                                        <!--<div class="input-group-prepend">-->
+                                            <!--<span class="input-group-text">用户密码</span>-->
+                                        <!--</div>-->
+                                        <!--<input name="password" type="text" v-model="addDetail.password" class="form-control">-->
+                                    <!--</div>-->
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">用户等级</span>
+                                        </div>
+                                        <select name="permission" v-model="addDetail.permission" class="form-control" id="sel14">
+                                            <option v-for="option in options" v-bind:value="option.value">
+                                                {{option.text}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- 模态框底部 -->
+                            <div class="modal-footer">
+                                <button @click="adddetail" class="btn btn-secondary" data-dismiss="modal">确定</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="myModal2">
+                    <div class="modal-dialog modal-lg" >
+                        <div class="modal-content">
+
+                            <!-- 模态框头部 -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">修改用户信息</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- 模态框主体 -->
+                            <div class="modal-body">
+                                <form>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">用户编号</span>
+                                        </div>
+                                        <input name="number" type="text" v-model="editDetail.number" class="form-control">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">用户姓名</span>
+                                        </div>
+                                        <input name="name" type="text" v-model="editDetail.name" class="form-control">
+                                    </div>
+                                    <!--<div class="input-group mb-3">-->
+                                        <!--<div class="input-group-prepend">-->
+                                            <!--<span class="input-group-text">用户密码</span>-->
+                                        <!--</div>-->
+                                        <!--<input name="password" type="text" v-model="editDetail.password" class="form-control">-->
+                                    <!--</div>-->
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">用户等级</span>
+                                        </div>
+                                        <select name="permission" v-model="editDetail.permission" class="form-control" id="sel12">
+                                            <option v-for="option in options" v-bind:value="option.value">
+                                                {{option.text}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- 模态框底部 -->
+                            <div class="modal-footer">
+                                <button @click="update" class="btn btn-secondary" data-dismiss="modal">确定</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <script>
+                /*当一个 Vue 实例被创建时，它向 Vue 的响应式系统中加入了其 data 对象中能找到的所有的属性。当这些属性的值发生改变时，html 视图将也会产生相应的变化。*/
+                var vue =new Vue({
+                    el: '#table',
+                    data: {
+                        newsList: [],
+                        permission:["管理员","教师","学生"],
+                        addDetail: {},
+                        editlist: false,
+                        editDetail: {},
+                        editDetail2: {},
+                        editid: '',
+                        resetid: '',
+                        options:[
+                            {text:"管理员",value:"0"},
+                            {text:"教师",value:"1"},
+                            {text:"学生",value:"2"}
+                        ],
+                    },
+
+                    methods: {
+                        init: function () {
+
+                            var _self = this;
+                            //自定义 一个函数 ，用来查询所有的用户信息，返回Json
+                            //url  data  success
+                            $.get("/lxService?method=userselect", function (data) {
+                                _self.newsList = data;
+                            }, "json");
+                        },
+                        //新增
+                        adddetail: function () {
+                            // alert("iiii");
+                            // console.log(newsList1[1]);
+                            this.newsList.push({
+                                number: this.addDetail.number,
+                                name: this.addDetail.name,
+                                // password:this.addDetail.password,
+                                permission:this.addDetail.permission,
+                                // place: this.addDetail.place,
+                                id: Math.floor(Math.random() * 1000000 + 1)
+                            });
+
+                            $.post("/lxService?method=useradd", {
+                                unum: this.addDetail.number,
+                                uname: this.addDetail.name,
+                                // password:this.addDetail.password,
+                                permission:this.addDetail.permission,
+                                // place: this.addDetail.place,
+                            }, "json");
+                            // window.location.reload()
+                        },
+                        //删除
+                        deletelist(number, i) {
+
+                            this.newsList.splice(i, 1);//i 为index ,即需要删除的元素的位置
+                            $.post("/lxService?method=userdelete&number=" + number + "", function () {
+                                alert("success");
+                            });
+                        },
+                        //编辑
+                        edit(item) {
+                            // console.log(item)
+                            this.editDetail = {
+                                number: item.number,
+                                name: item.name,
+                                // password:item.password,
+                                permission:item.permission,
+                                // place: item.place,
+                                id: item.id
+                            }
+                            this.editlist = true
+                            this.editid = item.id
+                        },
+                        //确认更新
+                        update()
+                        {
+                            let _this = this
+                            for (let i = 0; i < _this.newsList.length; i++) {
+                                if (_this.newsList[i].id == this.editid) {
+                                    _this.newsList[i] = {
+                                        number: _this.editDetail.number,
+                                        name: _this.editDetail.name,
+                                        // password:_this.editDetail.password,
+                                        permission:_this.editDetail.permission,
+                                        // place: _this.editDetail.place,
+                                        id: this.editid
+                                    }
+                                    $.post("/lxService?method=userupdate", {
+                                        number: _this.editDetail.number,
+                                        name: _this.editDetail.name,
+                                        // password:_this.editDetail.password,
+                                        permission:_this.editDetail.permission,
+                                        id: this.editid
+                                        // place: _this.editDetail.place,
+                                    }, "json");
+                                    this.editlist = false
+                                }
+                            }
+                            // window.location.reload()
+                        },//update
+
+                        resetting(item){
+                            this.resetid =item.id
+                            $.post("/lxService?method=userpasswordreset", {
+                                id:this.resetid
+                            }, "json");
+                            alert("success");
+                        }
+                    }
+                });
+                //初始化Vue对象完毕之后，就调用init方法 （一进入页面，就显示数据）
+                vue.init();
+            </script>
+        </main>
+
+    </div>
+
+</div>
+</body>
+</html>

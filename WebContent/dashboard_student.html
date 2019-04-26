@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>课程管理系统-学生平台</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">课程管理系统-学生平台</a>
+    <input class="form-control form-control-dark w-10" type="text" placeholder="百度一下" aria-label="Search"
+           style="width:917px;">
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link"><script>document.write(localStorage.getItem('username'));</script></a>
+        </li>
+    </ul>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="./OutServlet">注销</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <br>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:gomyclass()">
+                            <span data-feather="file-text"></span>
+                            我的课程
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:goselect()">
+                            <span data-feather="file-text"></span>
+                            选择课程
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <script>
+
+            function gomyclass() {
+                $('#ichange').attr('src', 'yxcourse.html');
+            }
+
+            function gomyinfo() {
+                $('#ichange').attr('src', 'myinfo.html');
+            }
+            function goselect() {
+                $('#ichange').attr('src', 'kxcourse.html');
+            }
+        </script>
+
+
+        <div>
+            <iframe id="ichange" src="./yxcourse.html"
+                    style="width:1280px;height:575px;padding-left: 5%; padding-top: 1%; border: 0"></iframe>
+        </div>
+
+
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://cdn.bootcss.com/popper.js/1.14.3/esm/popper.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+<!-- Icons -->
+<script src="https://cdn.bootcss.com/feather-icons/4.7.3/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+
+<!--<script>-->
+    <!--new Vue({-->
+        <!--el: '#data',-->
+        <!--data: {-->
+            <!--username: ''-->
+        <!--},-->
+    <!--})-->
+<!--</script>-->
+
+</body>
+</html>

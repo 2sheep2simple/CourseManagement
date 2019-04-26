@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+<script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" id="main">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+                <!--<br>-->
+                <h1 class="h2">课程信息管理</h1>
+                <br>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <button class="btn btn-xm btn-outline-secondary" data-toggle="modal" data-target="#addModal"
+                            @click="clear();">
+                        添加信息
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-responsive" id="student-list">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>课程</th>
+                        <th>学时</th>
+                        <th>学分</th>
+                        <th>类别</th>
+                        <th>周次</th>
+                        <th>上课时间</th>
+                        <th>教室</th>
+                        <th>老师</th>
+                        <th>总人数</th>
+                        <th>当前人数</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(item, index) in courseList">
+                        <td>{{item.number}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.hour}}</td>
+                        <td>{{item.credit}}</td>
+                        <td>{{item.type}}</td>
+                        <td>{{item.week}}</td>
+                        <td>{{item.time}}</td>
+                        <td>{{item.classroom}}</td>
+                        <td>{{item.teacher}}</td>
+                        <td>{{item.full_number}}</td>
+                        <td>{{item.current_number}}</td>
+                        <td>{{item.status}}</td>
+                        <td>
+                            <div class="btn-group mr-2">
+                                <button class="btn btn-sm btn-outline-secondary" @click="edit(item)"
+                                        data-toggle="modal" data-target="#addModal">修改
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary"
+                                        @click="delCourse(item.id)">删除
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal fade" id="addModal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                        <!-- 模态框头部 -->
+                        <div class="modal-header">
+                            <h4 class="modal-title" v-if="option == 'addCourse'">添加课程信息</h4>
+                            <h4 class="modal-title" v-if="option == 'editCourse'">编辑课程信息</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- 模态框主体 -->
+                        <div class="modal-body" style="margin: 1% 20% 1% 10%" id="modalData">
+                            <label for="number">课程号:</label>
+                            <input type="text" class="form-control" id="number" v-model="addDetail.number"><br>
+                            <label for="name">课程名:</label>
+                            <input type="text" class="form-control" id="name" v-model="addDetail.name"><br>
+                            <label for="hour">课时:</label>
+                            <input type="text" class="form-control" id="hour" v-model="addDetail.hour"><br>
+                            <label for="credit">学分:</label>
+                            <input type="text" class="form-control" id="credit" v-model="addDetail.credit"><br>
+                            <label for="type">类别:</label>
+                            <select class="form-control" id="type" v-model="addDetail.type">
+                                <option disabled value="0">请选择</option>
+                                <option v-for="type in typeList" v-bind:value="type.id">
+                                    {{type.type}}
+                                </option>
+                            </select>
+                            <br>
+                            <label for="week">周次:</label>
+                            <input type="text" class="form-control" id="week" v-model="addDetail.week"
+                                   placeholder="例如 1-8,12-15"><br>
+                            <label for="time">上课时间:</label>
+                            <input type="text" class="form-control" id="time" v-model="addDetail.time"
+                                   placeholder="例如 周一34,周三56"><br>
+                            <label for="classroom">教室:</label>
+                            <input type="text" class="form-control" id="classroom" v-model="addDetail.classroom"><br>
+                            <label for="type">老师:</label>
+                            <select class="form-control" id="teacher" v-model="addDetail.teacher">
+                                <option disabled value="0">请选择</option>
+                                <option v-for="teacher in teacherList" v-bind:value="teacher.id">
+                                    {{teacher.name}}
+                                </option>
+                            </select>
+                            <br>
+                            <label for="full_number">总人数:</label>
+                            <input type="text" class="form-control" id="full_number" v-model="addDetail.full_number"><br>
+                            <label for="current_number">当前人数:</label>
+                            <input type="text" class="form-control" id="current_number" v-model="addDetail.current_number"><br>
+                            <label for="status">状态:</label>
+                            <select class="form-control" id="status" v-model="addDetail.status">
+                                <option disabled value="0">请选择</option>
+                                <option v-for="status in statusList" v-bind:value="status.id">
+                                    {{status.state}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <!-- 模态框底部 -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                    @click="addCourse">提交
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<!--<script src="https://cdn.bootcss.com/popper.js/1.14.3/esm/popper.min.js"></script>-->
+<script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+<!-- Icons -->
+<script src="https://cdn.bootcss.com/feather-icons/4.7.3/feather.min.js"></script>
+<script>
+    feather.replace();
+</script>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+    /*当一个 Vue 实例被创建时，它向 Vue 的响应式系统中加入了其 data 对象中能找到的所有的属性。当这些属性的值发生改变时，html 视图将也会产生相应的变化。*/
+    var vue = new Vue({
+        el: '#main',
+        data: {
+            courseList: [],
+            statusList: [],
+            typeList: [],
+            teacherList: [],
+            addDetail: [],
+            option: ''
+        },
+        methods: {
+            init: function () {
+                var _self = this;
+                //自定义 一个函数 ，用来查询所有的用户信息，返回Json
+                $.get("./syfServlet?method=getCourse", function (data) {
+                    _self.courseList = data;
+                }, "json");
+                $.get("./syfServlet?method=getType", function (data) {
+                    _self.typeList = data;
+                }, "json");
+                $.get("./syfServlet?method=getStatus", function (data) {
+                    _self.statusList = data;
+                }, "json");
+                $.get("./syfServlet?method=getTeacher", function (data) {
+                    _self.teacherList = data;
+                }, "json");
+            },
+            clear: function() {
+                this.option = 'addCourse';
+                this.addDetail = [];
+                this.addDetail.type = 0;
+                this.addDetail.status = 0;
+            },
+            edit(item) {
+                this.option = 'editCourse';
+                this.addDetail = [];
+                this.addDetail.id = item.id;
+                this.addDetail.number = item.number;
+                this.addDetail.name = item.name;
+                this.addDetail.hour = item.hour;
+                this.addDetail.credit = item.credit;
+                for (i = 0; i < this.typeList.length; i++)
+                    if (this.typeList[i].type === item.type)
+                        this.addDetail.type = this.typeList[i].id;
+                this.addDetail.week = item.week;
+                this.addDetail.time = item.time;
+                this.addDetail.classroom = item.classroom;
+                console.log(item.teacher);
+                for (i = 0; i < this.teacherList.length; i++)
+                    if (this.teacherList[i].name === item.teacher)
+                        this.addDetail.teacher = this.teacherList[i].id;
+                this.addDetail.full_number = item.full_number;
+                this.addDetail.current_number = item.current_number;
+                for (i = 0; i < this.statusList.length; i++)
+                    if (this.statusList[i].state === item.status)
+                        this.addDetail.status = this.statusList[i].id;
+                console.log(this.addDetail);
+                // location.reload();
+            },
+            delCourse(id) {
+                $.get("./syfServlet?method=delCourse&id=" + id);
+                location.reload();
+            },
+            addCourse: function () {
+                if (this.option === 'editCourse')
+                    this.option += "&id=" + this.addDetail.id;
+                $.post("./syfServlet?method=" + this.option, {
+                    number: this.addDetail.number,
+                    name: this.addDetail.name,
+                    hour: this.addDetail.hour,
+                    credit: this.addDetail.credit,
+                    type: this.addDetail.type,
+                    week: this.addDetail.week,
+                    time: this.addDetail.time,
+                    classroom: this.addDetail.classroom,
+                    teacher: this.addDetail.teacher,
+                    full_number: this.addDetail.full_number,
+                    current_number: this.addDetail.current_number,
+                    status: this.addDetail.status
+                });
+                location.reload();
+            }
+        }
+    });
+    //初始化Vue对象完毕之后，就调用init方法 （一进入页面，就显示数据）
+    vue.init();
+    vue.clear();
+</script>
+
+</body>
+</html>
